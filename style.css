@@ -1,0 +1,505 @@
+:root {
+  --bg-paper: #f3f1ed;
+  --bg-pink: #ebbcc3;
+  --bg-pink-card: #f6b8c4;
+  --tape-pink: #f2d6dc;
+  --cream-paper: #efece6;
+  --text-dark: #2c2827;
+  --text-muted: #5a5250;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #dcd9d4;
+  color: var(--text-dark);
+  font-family: 'Gowun Batang', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 상단 안내 바 */
+.editor-bar {
+  width: 100%;
+  max-width: 430px;
+  background: #2c2827;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.editor-bar button {
+  background: var(--bg-pink-card);
+  color: #2c2827;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+/* 모바일 청첩장 메인 컨테이너 */
+.invitation-container {
+  width: 100%;
+  max-width: 430px;
+  background-color: var(--bg-paper);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 종이 질감 효과 */
+.section-paper {
+  background-color: var(--bg-paper);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 16px 16px;
+  padding: 56px 24px 48px;
+  text-align: center;
+}
+
+/* 1. 상단 타이틀 & 이름 */
+.main-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 56px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #1f1d1d;
+  margin-bottom: 24px;
+}
+
+.couple-names-top {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 36px;
+}
+
+.name-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.role-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.person-name {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* 핑크 하트 액자 2개 */
+.heart-frames-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 10px 0 42px;
+  padding: 0 8px;
+}
+
+.heart-card {
+  position: relative;
+  width: 158px;
+}
+
+.left-card {
+  transform: rotate(-4deg) translateY(-6px);
+}
+
+.right-card {
+  transform: rotate(4deg) translateY(8px);
+}
+
+.card-mini-label {
+  display: block;
+  font-size: 9px;
+  color: #666;
+  letter-spacing: 0.5px;
+  margin: 4px 0;
+}
+
+.top-left { text-align: left; }
+.top-right { text-align: right; }
+.bottom-right { text-align: right; }
+.bottom-center { text-align: center; }
+
+.pink-heart-frame {
+  display: block;
+  width: 158px;
+  height: 158px;
+  background-color: var(--bg-pink-card);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  padding: 18px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.pink-heart-frame:hover {
+  transform: scale(1.02);
+}
+
+/* 하트 모양 마스크 */
+.heart-cutout {
+  width: 100%;
+  height: 100%;
+  background-color: #dcd8d5;
+  clip-path: path("M61 20 C61 8, 45 0, 31 0 C13 0, 0 14, 0 33 C0 62, 35 84, 61 112 C87 84, 122 62, 122 33 C122 14, 109 0, 91 0 C77 0, 61 8, 61 20 Z");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.uploaded-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.05); /* 시안과 동일한 흑백 감성 필터 */
+}
+
+/* 컬러 사진을 원할 경우 아래 클래스 토글 가능 */
+.uploaded-photo.color-mode {
+  filter: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.upload-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #7a7270;
+  font-size: 11px;
+  padding: 10px;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.date-venue-summary {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+/* 2. 핑크 찢어진 종이 섹션 */
+.section-pink {
+  position: relative;
+  background-color: var(--bg-pink);
+  text-align: center;
+  padding: 36px 24px 48px;
+}
+
+.torn-edge {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background-color: var(--bg-paper);
+}
+
+.torn-top {
+  top: -1px;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 45%, 94% 80%, 88% 40%, 81% 85%, 74% 50%, 67% 90%,
+    60% 45%, 52% 95%, 45% 50%, 38% 85%, 30% 40%, 22% 90%, 15% 50%, 7% 85%, 0% 45%
+  );
+}
+
+.torn-bottom {
+  bottom: -1px;
+  clip-path: polygon(
+    0% 100%, 100% 100%, 100% 55%, 93% 20%, 86% 65%, 79% 25%, 71% 60%, 64% 15%,
+    56% 60%, 49% 10%, 41% 55%, 33% 20%, 25% 65%, 17% 15%, 9% 55%, 0% 25%
+  );
+}
+
+.section-eng-title {
+  font-size: 15px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.envelope-guide {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+/* 편지봉투 그래픽 */
+.envelope-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+  cursor: pointer;
+}
+
+.envelope-box {
+  width: 230px;
+  height: 145px;
+  background: var(--cream-paper);
+  position: relative;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 14px;
+}
+
+.envelope-box:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 82px;
+  background: #f7f4ef;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 2;
+}
+
+.envelope-lace {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88px;
+  background: rgba(255, 255, 255, 0.75);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 1;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 68px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e8ded1;
+  border: 2px solid #fff;
+  color: #b59b7d;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.envelope-subtext {
+  font-size: 9px;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+.family-info {
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.couple-inline {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.pink-fold-line {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+  margin: 20px -24px 32px;
+}
+
+/* 크림색 편지지 & 하트 클립 */
+.letter-paper-wrap {
+  position: relative;
+  padding-top: 18px;
+  transition: all 0.4s ease;
+}
+
+.heart-pin {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 40px;
+  background: #f5f0e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  font-size: 22px;
+  z-index: 2;
+}
+
+.letter-paper {
+  background: var(--cream-paper);
+  min-height: 320px;
+  padding: 48px 24px 36px;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  font-size: 13.5px;
+  line-height: 2.1;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3. GALLERY & LOCATION */
+.tape-title-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.tape-title {
+  background-color: var(--tape-pink);
+  padding: 6px 28px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.gallery-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px 36px 24px;
+  scrollbar-width: none;
+}
+
+.gallery-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.polaroid-frame {
+  flex: 0 0 230px;
+  height: 290px;
+  background: #ffffff;
+  padding: 18px 18px 34px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  scroll-snap-align: center;
+}
+
+.polaroid-photo-slot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #eceae6;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.polaroid-photo-slot .uploaded-photo {
+  filter: none; /* 갤러리는 기본 컬러 */
+}
+
+.gallery-controls {
+  margin-top: 4px;
+}
+
+.sub-btn {
+  background: transparent;
+  border: 1px solid #aaa;
+  color: #555;
+  padding: 6px 14px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.location-margin {
+  margin-top: 52px;
+}
+
+.location-box {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.venue-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.venue-address {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.map-placeholder {
+  display: block;
+  width: 100%;
+  height: 180px;
+  background: #e6e3de;
+  margin-bottom: 16px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-btn {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 9px 0;
+  font-size: 12px;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 미리보기 모드일 때 업로드 가이드 숨김 */
+body.preview-mode .editor-bar {
+  opacity: 0.3;
+}
+body.preview-mode .gallery-controls {
+  display: none;
+}

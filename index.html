@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>박주탁 ♥ 송수연 결혼합니다</title>
+
+  <!-- 카카오톡 공유 미리보기 (Open Graph) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="박주탁 ♥ 송수연 결혼식에 초대합니다" />
+  <meta property="og:description" content="소중한 분들을 모시고 사랑의 결실을 맺고자 합니다." />
+  <meta property="og:image" content="./images/og-thumb.jpg" />
+
+  <!-- 구글 웹폰트 (손글씨 및 명조 계열) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Gowun+Batang:wght@400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 상단 편집/미리보기 전환 안내 바 (하객 배포 시 숨김 가능) -->
+  <div class="editor-bar" id="editorBar">
+    <span>💡 빈 액자를 클릭해 사진을 넣어보세요!</span>
+    <button type="button" id="toggleEditBtn">미리보기 모드</button>
+  </div>
+
+  <main class="invitation-container">
+    <!-- 1. SAVE THE DATE 섹션 -->
+    <section class="section-paper top-section">
+      <h1 class="main-title">SAVE THE DATE</h1>
+
+      <div class="couple-names-top">
+        <div class="name-col">
+          <span class="role-label">신랑</span>
+          <strong class="person-name">박주탁</strong>
+        </div>
+        <div class="name-col">
+          <span class="role-label">신부</span>
+          <strong class="person-name">송수연</strong>
+        </div>
+      </div>
+
+      <!-- 핑크 하트 액자 2개 (사진 비워둠 + 클릭 업로드 지원) -->
+      <div class="heart-frames-wrap">
+        <!-- 좌측 프레임 (신부) -->
+        <div class="heart-card left-card">
+          <span class="card-mini-label top-left">Bride</span>
+          <label class="pink-heart-frame" for="upload-bride">
+            <input type="file" id="upload-bride" accept="image/*" hidden />
+            <div class="heart-cutout">
+              <!-- 고정 배포 시 src="./images/bride.jpg" 입력 -->
+              <img id="img-bride" src="" alt="신부 사진" class="uploaded-photo hidden" />
+              <div class="upload-placeholder" id="placeholder-bride">
+                <span>+ 사진 등록</span>
+              </div>
+            </div>
+          </label>
+          <span class="card-mini-label bottom-right">Su Yeon</span>
+        </div>
+
+        <!-- 우측 프레임 (신랑) -->
+        <div class="heart-card right-card">
+          <span class="card-mini-label top-right">Groom</span>
+          <label class="pink-heart-frame" for="upload-groom">
+            <input type="file" id="upload-groom" accept="image/*" hidden />
+            <div class="heart-cutout">
+              <!-- 고정 배포 시 src="./images/groom.jpg" 입력 -->
+              <img id="img-groom" src="" alt="신랑 사진" class="uploaded-photo hidden" />
+              <div class="upload-placeholder" id="placeholder-groom">
+                <span>+ 사진 등록</span>
+              </div>
+            </div>
+          </label>
+          <span class="card-mini-label bottom-center">Joo Tak</span>
+        </div>
+      </div>
+
+      <!-- 예식 일시 및 장소 요약 -->
+      <div class="date-venue-summary">
+        <p class="wedding-datetime" contenteditable="true">2027. 05. 22. SATURDAY PM 12:30</p>
+        <p class="wedding-hall" contenteditable="true">웨딩홀 이름 및 홀 정보 입력</p>
+      </div>
+    </section>
+
+    <!-- 2. A LETTER FOR YOU (핑크 찢어진 종이 섹션) -->
+    <section class="section-pink">
+      <div class="torn-edge torn-top"></div>
+
+      <div class="pink-inner">
+        <h2 class="section-eng-title">A LETTER FOR YOU</h2>
+        <p class="envelope-guide">편지봉투를 클릭해보세요</p>
+
+        <!-- 레이스 편지봉투 그래픽 -->
+        <div class="envelope-wrapper" id="envelopeBtn" title="클릭하면 편지가 열립니다">
+          <div class="envelope-box">
+            <div class="envelope-flap"></div>
+            <div class="envelope-lace"></div>
+            <div class="envelope-seal">♥</div>
+            <span class="envelope-subtext">For You</span>
+          </div>
+        </div>
+
+        <!-- 혼주 및 신랑신부 성함 -->
+        <div class="family-info">
+          <p><strong>박대원 · 김영미</strong>의 장남 <span class="couple-inline">박주탁</span></p>
+          <p><strong>송기창 · 유은숙</strong>의 차녀 <span class="couple-inline">송수연</span></p>
+        </div>
+
+        <hr class="pink-fold-line" />
+
+        <!-- 하트 스티커가 붙은 크림색 편지지 -->
+        <div class="letter-paper-wrap" id="letterPaper">
+          <div class="heart-pin">
+            <span>🤍</span>
+          </div>
+          <div class="letter-paper" contenteditable="true">
+            <p>
+              서로가 마주보며 다져온 사랑을<br />
+              이제 함께 한곳을 바라보며<br />
+              걸어갈 수 있는 큰 사랑으로 키우고자 합니다.<br /><br />
+              저희 두 사람이 사랑의 이름으로<br />
+              지켜나갈 수 있게 앞날을<br />
+              축복해 주시면 감사하겠습니다.<br /><br />
+              (이곳을 클릭해 초대 문구를 자유롭게 수정하세요)
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="torn-edge torn-bottom"></div>
+    </section>
+
+    <!-- 3. GALLERY & LOCATION 섹션 -->
+    <section class="section-paper bottom-section">
+      <!-- GALLERY -->
+      <div class="tape-title-wrap">
+        <h2 class="tape-title">GALLERY</h2>
+      </div>
+
+      <div class="gallery-carousel" id="galleryCarousel">
+        <!-- 갤러리 슬롯 1 -->
+        <div class="polaroid-frame">
+          <label class="polaroid-photo-slot" for="gallery-upload-1">
+            <input type="file" id="gallery-upload-1" accept="image/*" hidden />
+            <!-- 고정 배포 시 src="./images/gallery1.jpg" 입력 -->
+            <img id="gallery-img-1" src="" alt="웨딩 사진 1" class="uploaded-photo hidden" />
+            <div class="upload-placeholder" id="gallery-placeholder-1">
+              <span>+ 사진 1 추가</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- 갤러리 슬롯 2 (중앙 메인) -->
+        <div class="polaroid-frame active">
+          <label class="polaroid-photo-slot" for="gallery-upload-2">
+            <input type="file" id="gallery-upload-2" accept="image/*" hidden />
+            <!-- 고정 배포 시 src="./images/gallery2.jpg" 입력 -->
+            <img id="gallery-img-2" src="" alt="웨딩 사진 2" class="uploaded-photo hidden" />
+            <div class="upload-placeholder" id="gallery-placeholder-2">
+              <span>+ 사진 2 추가</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- 갤러리 슬롯 3 -->
+        <div class="polaroid-frame">
+          <label class="polaroid-photo-slot" for="gallery-upload-3">
+            <input type="file" id="gallery-upload-3" accept="image/*" hidden />
+            <!-- 고정 배포 시 src="./images/gallery3.jpg" 입력 -->
+            <img id="gallery-img-3" src="" alt="웨딩 사진 3" class="uploaded-photo hidden" />
+            <div class="upload-placeholder" id="gallery-placeholder-3">
+              <span>+ 사진 3 추가</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="gallery-controls">
+        <button type="button" id="addGallerySlotBtn" class="sub-btn">+ 갤러리 사진 칸 추가</button>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="tape-title-wrap location-margin">
+        <h2 class="tape-title">LOCATION</h2>
+      </div>
+
+      <div class="location-box">
+        <p class="venue-name" contenteditable="true">더 채플 앳 청담 3층 커티지홀</p>
+        <p class="venue-address" contenteditable="true">서울특별시 강남구 선릉로 757 (논현동)</p>
+
+        <!-- 약도/지도 이미지 슬롯 -->
+        <label class="map-placeholder" for="upload-map">
+          <input type="file" id="upload-map" accept="image/*" hidden />
+          <img id="img-map" src="" alt="약도 이미지" class="uploaded-photo hidden" />
+          <div class="upload-placeholder" id="placeholder-map">
+            <span>+ 약도 이미지 등록 또는 카카오맵 연동 영역</span>
+          </div>
+        </label>
+
+        <div class="nav-buttons">
+          <a href="https://map.kakao.com/" target="_blank" rel="noopener" class="nav-btn">카카오맵</a>
+          <a href="https://map.naver.com/" target="_blank" rel="noopener" class="nav-btn">네이버지도</a>
+          <button type="button" class="nav-btn" id="copyAddrBtn">주소 복사</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
