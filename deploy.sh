@@ -1,7 +1,6 @@
 #!/bin/bash
 # 모바일 청첩장 GitHub Pages 자동 배포 스크립트 (deploy.sh)
 
-set -e
 
 # 1. 본인 GitHub 정보 입력 (아래 두 줄만 본인 계정 정보로 수정하세요)
 GITHUB_USERNAME="lilatas"
